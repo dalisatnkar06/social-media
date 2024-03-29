@@ -1,10 +1,10 @@
 const { ProfileModel } = require("../models/user");
 
 const search = async(req, res) => {
-    const { username } = req.body;
+    const { email} = req.body;
 
     try {
-        const userProfile = await ProfileModel.findOne({ username });
+        const userProfile = await ProfileModel.findOne({ email });
 
         if (userProfile) {
             console.log('User Profile:', userProfile);

@@ -5,7 +5,7 @@ const Userprofile = async(req, res) => {
     try {
 
 
-        const existingUser = await UserModel.findOne({ username: username });
+        const existingUser = await UserModel.findOne({ email: email });
 
         if (!existingUser) {
             return res.status(404).json({ message: "User not found" });

@@ -1,9 +1,9 @@
 const { UserModel, PostModel } = require("../models/user");
 const Userpost = async(req, res) => {
-    const { username, Title, Content, Discription } = req.body;
+    const { email, Title, Content, Discription } = req.body;
 
     try {
-        const existingUser = await UserModel.findOne({ username: username });
+        const existingUser = await UserModel.findOne({email });
 
         if (!existingUser) {
             return res.status(404).json({ message: "User not found" });
@@ -13,7 +13,7 @@ const Userpost = async(req, res) => {
             Title: Title,
             Content: Content,
             Discription: Discription,
-            username: username
+            email:email
         };
 
         const createdPost = await PostModel.create(newpost);

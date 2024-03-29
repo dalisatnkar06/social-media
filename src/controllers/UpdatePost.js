@@ -1,18 +1,18 @@
 const { UserModel, PostModel } = require("../models/user");
 
 const UpdatePost = async(req, res) => {
-    const { username } = req.body;
+    const { email } = req.body;
     const { Title, Content, Discription } = req.body;
 
     try {
-        const user = await UserModel.findOne({ username: username });
+        const user = await UserModel.findOne({ email:email });
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
         const userPosts = await PostModel.findOne({
-            username: username
+            email:email
         });
 
         if (!userPosts) {
